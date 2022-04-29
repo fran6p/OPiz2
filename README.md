@@ -89,14 +89,12 @@ décrit précisément une installation manuelle (en ligne de commandes), les scr
   
  # Méthode alternative à l'exécution de scripts distants
   - Plutôt qu'exécuter les scripts à distance, vous pouvez récupérer le contenu de ce dépôt :
-      - ```
-      cd ~
-      git clone https://github.com/fran6p/OPiz2.git ```
+      - ```cd ~ && git clone https://github.com/fran6p/OPiz2.git```
   - Rendre exécutables les scripts (.sh):
-      - ```
-      cd ~/OPiz2
-      chmod +x *.sh```
-  - Exécuter chacun des scripts les uns à la suite des autres (étapes 2 à 4 (ou 6)).
+      - ```cd ~/OPiz2 && chmod +x *.sh```
+  - Exécuter chacun des scripts les uns à la suite des autres (étapes 2 à 4 (ou 6)):
+      - ```./1-armbian-OPiz2.sh```
+      - ...
 
 :smiley: 
   
