@@ -64,12 +64,12 @@ décrit précisément une installation manuelle (en ligne de commandes), les scr
   - A la fin du script, la carte va redémarrer automatiquement.
   
 # Étape 5) Complément d'installation d'Octoprint
-  - Exécuter la commande suivante pour télécharger le script d'installation des compléments à partir de ce dépôt
+  - Exécuter la commande suivante pour télécharger le script d'installation des compléments (installation, activation et démarrage des services (octoprint, webcamd, haproxy, modification du fichier config.yaml (Octoprint)) à partir de ce dépôt
     - ``bash <(curl -Ls https://github.com/fran6p/OPiz2/raw/master/4-install-octoprint-suite.sh)``
   - A la fin du script, la carte va redémarrer automatiquement.
    
  # Étape 6) Installations facultatives mais bien pratiques
-  - Exécuter la commande suivante pour télécharger le script permettant de gérer les «GPIO» à partir de ce dépôt
+  - Exécuter la commande suivante pour télécharger le script permettant de gérer les «GPIO» de maniére identique à un Raspberry Pi à partir de ce dépôt
     - ``bash <(curl -Ls https://github.com/fran6p/OPiz2/raw/master/5-armbian-gpio.sh)``
   - Exécuter la commande suivante pour télécharger le script permettant de gérer le partage réseau «pi» à partir de ce dépôt
     - ``bash <(curl -Ls https://github.com/fran6p/OPiz2/raw/master/6-octo-samba.sh)``	
