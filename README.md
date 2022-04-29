@@ -3,8 +3,11 @@
   
  Ce <a href="https://github.com/fran6p/Documents-LI3D/blob/main/Installer%20Octoprint%20sur%20une%20OrangePi%20Zero%202.md" target="_blank">document</a>
 décrit précisément une installation manuelle (en ligne de commandes), les scripts proposés ici agrègent les différentes manipulations réalisées afin d'automatiser l'installation et éviter des erreurs de manipulations / saisies / recopies, autrement dénommées [ICC](https://fr.wiktionary.org/wiki/interface_chaise-clavier) ([PEBCAK](https://fr.wiktionary.org/wiki/PEBCAK) pour les anglophones ;-) ).
- Il s'agit ici d'offrir aux possesseurs d'imprimante 3D une installation de base d'Octoprint avec la plupart des paramètres déjà configurés et quelques greffons qui me semblent indispensables. 
+
+ Il s'agit ici d'offrir aux possesseurs d'imprimante 3D une installation de base d'Octoprint avec la plupart des paramètres déjà configurés et quelques greffons qui me semblent indispensables.
+ 
   Je ne guide pas l'utilisateur à travers toutes les étapes (flashage de l'image, configuration du Wifi, ...), se référer au document en lien plus haut pour une description plus détaillée.
+  
   Il est supposé que l'utilisateur sait réaliser une image système sur une carte SD et se connecter à sa nouvelle installation Armbian via SSH.  Je n'aborderai donc pas ces étapes.
 
 ## Ce que ces scripts vont configurer
