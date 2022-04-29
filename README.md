@@ -38,7 +38,7 @@ décrit précisément une installation manuelle (en ligne de commandes), les scr
   - Brancher un câble RJ45 sur le OPiz2 d'un côté et sur votre routeur de l'autre.
   - Connecter votre OPiz2 à l'alimentation électrique via un câble USB-C.
   - Attendre une minute ou plus qu'il démarre (la diode est rouge). Quand elle passe au vert, la carte a reçu une adresse IP de votre routeur.
-  - Se connectez via SSH (vérifier votre routeur pour connaitre quelle adresse a été assignée)
+  - Se connecter via SSH (vérifier sur votre routeur ou par n'importe quel autre moyen afin de connaitre quelle adresse a été assignée)
     - ```ssh root@ADRESSE.IP.OPiz2.ICI```
     - Mot de passe : ``1234``
   - Exécuter la commande suivante pour télécharger le script d'initialisation à partir de ce dépôt, puis suivre les instructions.
