@@ -96,7 +96,7 @@ décrit précisément une installation manuelle (en ligne de commandes), les scr
     chmod +x *.sh```
   - Exécuter chacun des scripts les uns à la suite des autres (étapes 2 à 4 (ou 6)).
 
-:-)   
+:smiley: 
   
   
  
