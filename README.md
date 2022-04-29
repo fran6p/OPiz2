@@ -31,7 +31,7 @@ décrit précisément une installation manuelle (en ligne de commandes), les scr
 
 # Étape 1) Configuration de la carte SD
   - Télécharger la dernière version de [Armbian](https://www.armbian.com/orange-pi-zero-2/) ( Armbian 22.02 Bullseye au moment de la rédaction )  
-  - Imagez votre carte SD avec votre imageur préféré
+  - Imager votre carte SD avec votre imageur préféré
   
 # Étape 2) Configuration initiale du OrangePI Zero 2 (OPiz2)
   - Insérer la carte SD imagée dans le OPiz2.
