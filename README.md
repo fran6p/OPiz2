@@ -2,7 +2,7 @@
   OctoPrint: scripts d'installation complète pour une carte OrangePi Zero 2 avec gestion d'une Webcam
   
  Ce <a href="https://github.com/fran6p/Documents-LI3D/blob/main/Installer%20Octoprint%20sur%20une%20OrangePi%20Zero%202.md" target="_blank">document</a>
-décrit précisément une installation manuelle (en ligne de commandes), les scripts proposés ici agrègent les différentes manipulations réalisées afin d'automatiser l'installation et éviter des erreurs de manipulations / saisies / recopies, autrement dénommées [ICC](https://fr.wiktionary.org/wiki/interface_chaise-clavier) ([PEBCAK](https://fr.wiktionary.org/wiki/PEBCAK) pour les anglophones ;-) ).
+décrit précisément une installation manuelle (en ligne de commandes), les scripts proposés ici agrègent les différentes manipulations réalisées afin d'automatiser l'installation et éviter des erreurs de manipulations / saisies / recopies, autrement dénommées [ICC](https://fr.wiktionary.org/wiki/interface_chaise-clavier) ([PEBCAK](https://fr.wiktionary.org/wiki/PEBCAK) pour les anglophones :smirk: ).
 
  Il s'agit ici d'offrir aux possesseurs d'imprimante 3D une installation de base d'Octoprint avec la plupart des paramètres déjà configurés et quelques greffons qui me semblent indispensables.
  
@@ -42,9 +42,8 @@ décrit précisément une installation manuelle (en ligne de commandes), les scr
     - ```ssh root@ADRESSE.IP.OPiz2.ICI```
     - Mot de passe : ``1234``
   - Exécuter la commande suivante pour télécharger le script d'initialisation à partir de ce dépôt, puis suivre les instructions.
-    - ```bash <(curl -Ls https://github.com/fran6p/OPiz2/raw/master/1-armbian-OPiz2.sh)``
-    - Sélectionner votre langue, votre emplacement et votre fuseau horaire
-      - J'utilise ```fr_FR.UTF-8`` pour la langue FR et la zone Europe/Paris pour le fuseau horaire
+    - ``bash <(curl -Ls https://github.com/fran6p/OPiz2/raw/master/1-armbian-OPiz2.sh)``
+    - Sélectionner votre langue, votre emplacement et votre fuseau horaire (J'utilise ``fr_FR.UTF-8`` pour la langue FR et la zone Europe/Paris pour le fuseau horaire)
   - A la fin du script, la carte devrait redémarrer automatiquement.
   
 # Étape 3) Préparation de Linux
@@ -88,12 +87,14 @@ décrit précisément une installation manuelle (en ligne de commandes), les scr
   
   
  # Méthode alternative à l'exécution de scripts distants
-  - Plutôt qu'exécuter les scripts à distance, vous pouvez récupérer le contenu de ce dépôt :```
-    cd ~
-    git clone https://github.com/fran6p/OPiz2.git ```
-  - Rendre exécutables les scripts (.sh):```
-    cd ~/OPiz2
-    chmod +x *.sh```
+  - Plutôt qu'exécuter les scripts à distance, vous pouvez récupérer le contenu de ce dépôt :
+      - ```
+      cd ~
+      git clone https://github.com/fran6p/OPiz2.git ```
+  - Rendre exécutables les scripts (.sh):
+      - ```
+      cd ~/OPiz2
+      chmod +x *.sh```
   - Exécuter chacun des scripts les uns à la suite des autres (étapes 2 à 4 (ou 6)).
 
 :smiley: 
