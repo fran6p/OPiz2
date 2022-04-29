@@ -49,8 +49,8 @@ décrit précisément une installation manuelle (en ligne de commandes), les scr
 # Étape 3) Préparation de Linux
   - Une fois votre OPiz2 redémarré.
   - Vous reconnecter via SSH en utilisant ``1234`` comme mot de passe «root».
-    - L'utilisateur «pi» a été créé, son mot de passe est initialisé à ``orangepi``
-  - VOUS POUVEZ CHANGER LE MOT DE PASSE SI VOUS LE SOUHAITEZ (**RECOMMANDÉ**)
+    - L'utilisateur «pi» (gestion d'Octoprint) a été créé, son mot de passe est initialisé à ``orangepi``
+  - VOUS POUVEZ CHANGER LE MOT DE PASSE «ROOT» SI VOUS LE SOUHAITEZ (**RECOMMANDÉ**)
     - Taper ``passwd`` et suivre les instructions.
   - Exécuter la commande suivante pour télécharger le script de préparation à partir de ce dépôt.
     - ``bash <(curl -Ls https://github.com/fran6p/OPiz2/raw/master/2-installation-paquets.sh)``
