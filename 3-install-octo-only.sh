@@ -4,6 +4,9 @@
 # La majorité des commandes vient de ce lien https://community.octoprint.org/t/setting-up-octoprint-on-a-raspberry-pi-running-raspbian/2337 
 # 
 
+# Utilisateur non priviligié (pi)
+OCTO_USER="pi"
+
 # Liste de greffons (plugins) 'indispensables' (à modifier éventuellement)
 # Dashboard, DisplayLayerProgress, FirmwareUpdater, PrintTimeGenius, UICustomizer, BackupScheduler, Resource-Monitor,
 # Preheat, GPIO-Status, MultipleUpload, NetworkHealth, AutoLoginConfig
@@ -21,10 +24,9 @@ OCTOPRINT_PLUGINS=( "https://github.com/j7126/OctoPrint-Dashboard/archive/master
                     "https://github.com/OctoPrint/OctoPrint-AutoLoginConfig/releases/latest/download/release.zip"            
 )
 
-if ! [ $(id -u) -ne 0 ]; then
-	echo "Ce script ne doit pas être exécuté en tant que «root»"
-	echo 
-	echo "L'installation se fait en tant qu'utilisateur pi"
+if [ $(id -u) -ne 0 ]; then
+	echo "Ce script bien qu'exécuté en tant que «root»"
+	echo "Réalise une partie de l'installation en tant qu'utilisateur pi"
 	exit 1
 fi
 
@@ -51,14 +53,13 @@ clear
 echo "Installation de Octoprint"
 echo
 
-mkdir OctoPrint
+cd /home/pi
+su -c "mkdir OctoPrint" -l $OCTO_USER
 cd OctoPrint
-python3 -m venv venv
-source venv/bin/activate
-pip install pip --upgrade
-pip install --no-cache-dir Octoprint
-deactivate
-cd ~
+su -c "python3 -m venv venv" -l $OCTO_USER
+su -c "source venv/bin/activate" -l $OCTO_USER
+su -c "pip install pip --upgrade" -l $OCTO_USER
+su -c "pip install --no-cache-dir Octoprint" -l $OCTO_USER
 
 #Premier lancement du serveur. Si tout OK, le dossier caché .octoprint doit avoir été créé.
 # Il faut stopper manuellement le serveur pour poursuivre l'installation via CTRL+C 
@@ -66,7 +67,8 @@ echo && read -p "Lancement du serveur.\
 Pour l'arrêter et poursuivre l'installation: CTRL+C \
  \
 Presser ENTRÉE pour procéder" && echo
-./OctoPrint/venv/bin/octoprint serve
+cd /home/pi
+su -c "./OctoPrint/venv/bin/octoprint serve" -l $OCTO_USER
 
 # Installation des plugins 'indispensables'
 echo "Installation de quelques greffons :"
@@ -77,7 +79,7 @@ echo
 cd /home/pi
 for greffon in "${OCTOPRINT_PLUGINS}"
   do
-    /home/pi/OctoPrint/venv/bin/pip --no-cache-dir install ${greffon}
+    su -c "/home/pi/OctoPrint/venv/bin/pip --no-cache-dir install ${greffon}" -l $OCTO_USER
   done
 
 # Mjpeg-streamer
@@ -85,11 +87,9 @@ for greffon in "${OCTOPRINT_PLUGINS}"
 clear
 echo "Installation de MJPEG-STREAMER"
 echo
-git clone https://github.com/jacksonliam/mjpg-streamer.git
+cd /home/pi
+su -c "git clone https://github.com/jacksonliam/mjpg-streamer.git" -l $OCTO_USER
 cd /home/pi/mjpg-streamer/mjpg-streamer-experimental
 export LD_LIBRARY_PATH=.
-make
+su -c "make" -l $OCTO_USER
 cd /home/pi
-
-# Nettoyage: supprimer le fichier d'installation
-rm -f 3-install-octo-only.sh
