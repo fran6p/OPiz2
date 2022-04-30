@@ -3,6 +3,13 @@
 # F. Poulizac (fran6p)
 #
 
+# Variables
+# Mot de passe 'root'
+ROOTPWD="1234"
+# Utilisateur Octoprint et son mot de passe
+OCTO_USER="pi"
+OCTO_USERPWD="orangepi"
+
 if [ $(id -u) -ne 0 ]; then
 	echo "Ce script doit être exécuté en tant que «root»"
 	exit 1
@@ -12,6 +19,20 @@ echo && read -p "Voulez-vous initialiser l'OrangePi Zero 2 ? (o/n)" -n 1 -r -s i
 if [[ $installOPiz2 != "O" && $installOPiz2 != "o" ]]; then
 	echo "Installation d'Armbian-OPiz2 annulée."
 	exit 1
+fi
+
+# TEST
+# Ajout du Wifi
+echo && read -p "Voudrez-vous accéder en Wifi sur la carte ? (o/n)" -n 1 -r -s installWifi && echo
+if [[ $installWifi != "N" && $installWifi != "n" ]]; then
+	echo "Préparation à l'installation de la connexion Wifi."
+	read -p "Quel est le nom du point d'accès Wifi ?"  -r SSID
+	read -p "Quel est le mot de passe du point d'accès Wifi ?"  -r WIFIPWD
+	echo "Wifi: $SSID Mot de passe Wifi: $WIFIPWD"
+	echo && read -p "Est-ce correct ? ( o / n )" -n 1 -r -s Correct && echo
+        if [[ $Correct != "N" && $Correct != "n" ]]; then
+	nmcli device wifi connect "$SSID" password "$WIFIPWD"
+	fi
 fi
 
 # Mises à jour
@@ -26,8 +47,8 @@ IP_RJ45=$(ifconfig eth0 |perl -ne 'print $1 if /inet\s.*?(\d{1,3}\.\d{1,3}\.\d{1
 IP_WIFI=$(ifconfig wlan0 |perl -ne 'print $1 if /inet\s.*?(\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})\b/')
 
 # Mot de passe
-#(echo "root" ; echo "1234" ; echo "1234") | passwd
-echo -e '1234\n1234\n' | (passwd root)
+#(echo "root" ; echo "$ROOTPWD" ; echo "$ROOTPWD") | passwd
+echo -e "$ROOTPWD\n$ROOTPWD\n" | (passwd root)
 
 # Eviter qu'à la prochaine connexion en root qu'il soit demandé de modifier le MDP
 rm -f /root/.not_logged_in_yet
@@ -53,44 +74,44 @@ echo
 localectl set-keymap fr
 setupcon
 
+
+
 # Ajout de l'utilisateur «pi» (Octoprint)
 echo "Ajout de l'utilisateur 'pi' )Octoprint)"
 echo "Cet utilisateur appartient aux groupes : sudo,video,plugdev,dialout,tty "
 echo "Son mot de passe est fixé à 'orangepi'"
 echo
-adduser pi
+adduser $OCTO_USER
 # Ajouter «pi» aux groupes nécessaires
-usermod -a -G sudo,video,plugdev,dialout,tty  pi
+usermod -a -G sudo,video,plugdev,dialout,tty  $OCTO_USER
 # Mettre un mot de passe à l'utilisateur «pi» (à modifier ultérieurement si besoin)
-echo -e "orangepi\norangepi\n" | (passwd pi)
+echo -e "$OCTO_USERPWD\n$OCTO_USERPWD\n" | (passwd $OCTO_USER)
 
 # Permettre à «pi» de lancer des commandes normalement lancées avec les droits «root» (shutdown et service)
-echo "On autorise l'utilisateur 'pi' à arrêter, redémarrer le système ainsi que redémarrer certains services"
+echo "On autorise l'utilisateur $OCTO_USER à arrêter, redémarrer le système ainsi que redémarrer certains services"
 echo
-cat << EOF > "/etc/sudoers.d/octoprint-shutdown"
-pi ALL=NOPASSWD: /sbin/shutdown
-EOF
-cat << EOF > "/etc/sudoers.d/octoprint-service"
-pi ALL=NOPASSWD: /usr/sbin/service
-EOF
-cat << EOF > "/etc/sudoers.d/octoprint-ip"
-pi ALL=NOPASSWD: /sbin/ip
-EOF
+echo "$OCTO_USER ALL=(ALL) NOPASSWD: /sbin/shutdown *" > /etc/sudoers.d/octoprint-shutdown
+echo "$OCTO_USER ALL= NOPASSWD: /bin/systemctl restart octoprint.service" > /etc/sudoers.d/octoprint-service
+echo "$OCTO_USER ALL= NOPASSWD: /sbin/ip" > /etc/sudoers.d/octoprint-ip
 # attribuer les bons droits sur ces derniers fichiers
 chmod 0440 /etc/sudoers.d/octoprint-s*
 
 # TERMINÉ - Reboot
 echo "========================"
 echo "Utilisateur : root"
-echo "Mot de passe: 1234"
+echo "Mot de passe: $ROOTPWD"
 echo "========================"
 echo
 echo "========================"
-echo "Utilisateur : pi"
-echo "Mot de passe: orangepi"
+echo "Utilisateur : $OCTO_USER"
+echo "Mot de passe: $OCTO_USERPWD"
 echo "========================"
-echo
 echo " => à modifier après redémarrage (ou pas ;-) )"
+echo
+echo "========================"
+echo "WIfi        : $SSID"
+echo "Mot de passe: $WIFIPWD"
+echo "========================"
 echo
 echo "========================"
 echo "Nom d'hôte : $(hostame)"
@@ -100,4 +121,3 @@ echo
 read -p "Presser ENTRÉE pour redémarrer"
 
 reboot now
-exit 0
