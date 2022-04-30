@@ -24,25 +24,25 @@ fi
 clear
 echo "Création du service octoprint puis activation et démarrage du serveur"
 echo
-#cat << EOF > "/home/pi/octoprint.service"
-#[Unit]
-#Description=Octoprint
-#After=network-online.target
-#Wants=network-online.target
-# 
-#[Service]
-#User=pi
-#Type=simple
-#ExecStart=/home/pi/OctoPrint/venv/bin/octoprint serve
-#
-#[Install]
-#WantedBy=multi-user.target
-#EOF
+cat << EOF > "/home/pi/octoprint.service"
+[Unit]
+Description=Octoprint
+After=network-online.target
+Wants=network-online.target
+ 
+[Service]
+User=pi
+Type=simple
+ExecStart=/home/pi/OctoPrint/bin/octoprint serve
+
+[Install]
+WantedBy=multi-user.target
+EOF
 # Déplacer ce fichier service au bon endroit
-#mv /home/pi/octoprint.service /etc/systemd/system/octoprint.service
+mv /home/pi/octoprint.service /etc/systemd/system/octoprint.service
 
 # Méthode alternative et préférable : récupérer ce script directement sur le Github d'Octoprint
-wget https://github.com/OctoPrint/OctoPrint/raw/master/scripts/octoprint.service && mv octoprint.service /etc/systemd/system/octoprint.service
+#wget https://github.com/OctoPrint/OctoPrint/raw/master/scripts/octoprint.service && mv octoprint.service /etc/systemd/system/octoprint.service
 #Recharger, activer l'auto-start puis démarrer le service OctoPrint
 systemctl daemon-reload
 systemctl enable octoprint
