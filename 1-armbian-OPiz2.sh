@@ -4,7 +4,7 @@
 #
 
 # Variables
-# Mot de passe 'root'
+# Mot de passe root
 ROOTPWD="1234"
 # Utilisateur Octoprint et son mot de passe
 OCTO_USER="pi"
