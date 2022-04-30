@@ -53,26 +53,26 @@ décrit précisément une installation manuelle (en ligne de commandes), les scr
   - VOUS POUVEZ CHANGER LE MOT DE PASSE «ROOT» SI VOUS LE SOUHAITEZ (**RECOMMANDÉ**)
     - Taper ``passwd`` et suivre les instructions.
   - Exécuter la commande suivante pour télécharger le script de préparation à partir de ce dépôt.
-    - ``bash <(curl -Ls https://github.com/fran6p/OPiz2/raw/master/2-installation-paquets.sh)``
+    - ``bash <(curl -Ls https://raw.githubusercontent.com/fran6p/OPiz2/main/2-installation-paquets.sh)``
     - Cela mettra à jour et installera les dépendances de Armbian Bullseye requises pour ce projet (à jour au 4-2022).
     - Soyez patient, cela peut prendre un certain temps.
     - AVERTISSEMENT - ceci téléchargera de quelques dizaines à quelques centaines de Mo de données de mise à jour.  Une connexion instable accroitra le temps de téléchargement.
 
 # Étape 4) Installation du logiciel Octoprint
   - Exécuter la commande suivante pour télécharger le script d'installation du serveur Octoprint à partir de ce dépôt
-    - ``bash <(curl -Ls https://github.com/fran6p/OPiz2/raw/master/3-install-octo-only.sh)``
+    - ``bash <(curl -Ls https://raw.githubusercontent.com/fran6p/OPiz2/main/3-install-octo-only.sh)``
   - A la fin du script, la carte va redémarrer automatiquement.
   
 # Étape 5) Complément d'installation d'Octoprint
   - Exécuter la commande suivante pour télécharger le script d'installation des compléments (installation, activation et démarrage des services (octoprint, webcamd, haproxy, modification du fichier config.yaml (Octoprint)) à partir de ce dépôt
-    - ``bash <(curl -Ls https://github.com/fran6p/OPiz2/raw/master/4-install-octoprint-suite.sh)``
+    - ``bash <(curl -Ls https://raw.githubusercontent.com/fran6p/OPiz2/main/4-install-octoprint-suite.sh)``
   - A la fin du script, la carte va redémarrer automatiquement.
    
  # Étape 6) Installations facultatives mais bien pratiques
   - Exécuter la commande suivante pour télécharger le script permettant de gérer les «GPIO» de maniére identique à un Raspberry Pi à partir de ce dépôt
-    - ``bash <(curl -Ls https://github.com/fran6p/OPiz2/raw/master/5-armbian-gpio.sh)``
+    - ``bash <(curl -Ls https://raw.githubusercontent.com/fran6p/OPiz2/main/5-armbian-gpio.sh)``
   - Exécuter la commande suivante pour télécharger le script permettant de gérer le partage réseau «pi» à partir de ce dépôt
-    - ``bash <(curl -Ls https://github.com/fran6p/OPiz2/raw/master/6-octo-samba.sh)``	
+    - ``bash <(curl -Ls https://raw.githubusercontent.com/fran6p/OPiz2/main/6-octo-samba.sh)``	
   - Après installation de ces derniers scripts, Octoprint est pleinement fonctionnel et n'attends plus que la connexion de la carte sur l'imprimante 3D.
   
  # Étape 7) Connecter l'imprimante et tester
