@@ -43,8 +43,9 @@ décrit précisément une installation manuelle (en ligne de commandes), les scr
     - Mot de passe : ``1234``
   - Exécuter la commande suivante pour télécharger le script d'initialisation à partir de ce dépôt, puis suivre les instructions.
     - ``bash <(curl -Ls https://raw.githubusercontent.com/fran6p/OPiz2/main/1-armbian-OPiz2.sh)``
-    - Sélectionner votre langue, votre emplacement et votre fuseau horaire (J'utilise ``fr_FR.UTF-8`` pour la langue FR et la zone Europe/Paris pour le fuseau horaire)
-  - A la fin du script, la carte devrait redémarrer automatiquement.
+    - Si vous souhaitez pouvoir accéder à la carte en Wifi, indiquer le nom du point d'accès (SSID) et son mot de passe pour pouvoir l'activer.
+    - Sélectionner votre langue, votre emplacement et votre fuseau horaire (J'utilise ``fr_FR.UTF-8 UTF8  `` pour la langue FR les locales et la zone Europe/Paris pour le fuseau horaire)
+  - A la fin du script, un récapitulatif sera affiché puis la carte devrait redémarrer après confirmation.
   
 # Étape 3) Préparation de Linux
   - Une fois votre OPiz2 redémarré.
