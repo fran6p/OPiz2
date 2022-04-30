@@ -54,22 +54,22 @@ echo "Installation de Octoprint"
 echo
 
 cd /home/pi
-su -c "mkdir OctoPrint" -l $OCTO_USER
-cd OctoPrint
-su -c "python3 -m venv venv" -l $OCTO_USER
-su -c "source venv/bin/activate" -l $OCTO_USER
-su -c "pip install pip --upgrade" -l $OCTO_USER
-su -c "pip install --no-cache-dir Octoprint" -l $OCTO_USER
+su -c "python3 -m venv OctoPrint" -l $OCTO_USER
+su -c "source OctoPrint/bin/activate" -l $OCTO_USER
+su -c "/home/$OCTO_USER/OctoPrint/bin/pip install pip --upgrade" -l $OCTO_USER
+su -c "/home/$OCTO_USER/OctoPrint/bin/pip install --no-cache-dir octoprint" -l $OCTO_USER
 
 #Premier lancement du serveur. Si tout OK, le dossier caché .octoprint doit avoir été créé.
 # Il faut stopper manuellement le serveur pour poursuivre l'installation via CTRL+C 
-echo && read -p "Lancement du serveur.\
-Pour l'arrêter et poursuivre l'installation: CTRL+C \
- \
-Presser ENTRÉE pour procéder" && echo
+echo && echo "Lancement du serveur." && echo "Pour l'arrêter et poursuivre l'installation: CTRL+C" && read -p "Presser ENTRÉE pour procéder"
 cd /home/pi
-su -c "./OctoPrint/venv/bin/octoprint serve" -l $OCTO_USER
-
+su -c "./home/$OCTO_USER/OctoPrint/bin/octoprint serve" -l $OCTO_USER
+clear
+echo && read -p "Le serveur Octoprint a bien démarré ? (o/n)" -n 1 -r -s serveurOctoOK && echo
+if [[ $serveurOctoOK != "O" && $serveurOctoOK != "o" ]]; then
+	echo "Le serveur Octoprint a rencontré un problème."
+	echo "Un appel à Houston va être nécessaire :-("
+fi
 # Installation des plugins 'indispensables'
 echo "Installation de quelques greffons :"
 echo "Dashboard, DisplayLayerProgress, FirmwareUpdater, PrintTimeGenius,
@@ -79,7 +79,7 @@ echo
 cd /home/pi
 for greffon in "${OCTOPRINT_PLUGINS}"
   do
-    su -c "/home/pi/OctoPrint/venv/bin/pip --no-cache-dir install ${greffon}" -l $OCTO_USER
+    su -c "/home/$OCTO_USER/OctoPrint/bin/pip --no-cache-dir install ${greffon}" -l $OCTO_USER
   done
 
 # Mjpeg-streamer
@@ -88,8 +88,6 @@ clear
 echo "Installation de MJPEG-STREAMER"
 echo
 cd /home/pi
-su -c "git clone https://github.com/jacksonliam/mjpg-streamer.git" -l $OCTO_USER
-cd /home/pi/mjpg-streamer/mjpg-streamer-experimental
-export LD_LIBRARY_PATH=.
-su -c "make" -l $OCTO_USER
+su -c "git clone --depth 1 https://github.com/jacksonliam/mjpg-streamer.git mjpg-streamer" -l $OCTO_USER
+su -c "cd /home/pi/mjpg-streamer/mjpg-streamer/experimental && make" -l $OCTO_USER
 cd /home/pi
