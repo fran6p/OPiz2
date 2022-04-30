@@ -106,7 +106,7 @@ systemctl start haproxy
 clear
 echo "Installation des scipts de contrôle de la Webcam en tant que service, activation et démarrage"
 echo
-sudo -u pi mkdir /home/pi/scripts
+su -l pi -c "mkdir /home/pi/scripts"
 cat << EOF > "/home/pi/scripts/webcamd.service"
 [Unit]
 Description=Camera streamer for OctoPrint
@@ -199,59 +199,6 @@ chmod +x /home/pi/scripts/webcamDaemon
 # Arrêter OctoPrint pour permettre la «customisation»
 systemctl stop octoprint.service
 
-#Créer un profil par défaut pour une Creality
-clear
-echo "Création d'un profil d'imprimante (Creality Cr10)"
-echo
-sudo -u pi cat << EOF >> "/home/pi/.octoprint/printerProfiles/creality.profile"
-axes:
-  e:
-    inverted: false
-    speed: 300
-  x:
-    inverted: false
-    speed: 6000
-  y:
-    inverted: false
-    speed: 6000
-  z:
-    inverted: false
-    speed: 200
-color: default
-extruder:
-  count: 1
-  nozzleDiameter: 0.4
-  offsets:
-  - - 0.0
-    - 0.0
-  sharedNozzle: false
-heatedBed: true
-heatedChamber: false
-id: Creality_CR10
-model: Creality_CR10
-name: Creality_CR10
-volume:
-  custom_box:
-    x_max: 300.0
-    x_min: 0.0
-    y_max: 300.0
-    y_min: 0.0
-    z_max: 400.0
-    z_min: 0.0
-  depth: 300.0
-  formFactor: rectangular
-  height: 400.0
-  origin: lowerleft
-  width: 300.0
-EOF
-# Attribuer les bons droits et appartenance (utilisateur pi)
-chown pi:pi /home/pi/.octoprint/printerProfiles/creality.profile
-
-# Pour copier et modifier des fichiers - moyen rapide de préparer plusieurs profils
-#cd /home/pi/.octoprint/printerProfiles/
-#cp creality.profile creality2.profile
-#sed -i 's/CR10/E3S1/g' creality2.profile
-
 # Ajout de la section dans yaml d'OctoPrint pour la gestion de la Webcam
 clear
 echo "Modifications config.yaml :"
@@ -284,8 +231,7 @@ system:
      confirm: false
      name: Stop video stream
 EOF
-# Modifier le profil d'imprimante par défaut par celui créé précédemment
-sed -i 's/_default/Creality_CR10/' /home/pi/.octoprint/config.yaml 
+
 # Attribuer les bons droits et appartenance (utilisateur pi)
 chown pi:pi /home/pi/.octoprint/config.yaml
 
@@ -294,8 +240,7 @@ systemctl start octoprint
 sleep 30
 
 # Une petite pause avant de redémarrer
-echo && read -p "Presser la touche ENTRÉE pour redémarrer
-La connexion ssh sera perdue et devra être relancée"
+echo && read -p "Presser la touche ENTRÉE pour redémarrer. La connexion ssh sera perdue et devra être relancée"
 echo
 
 ################## Redémarrage final ##########################
