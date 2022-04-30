@@ -2,7 +2,6 @@
 # Octoprint Armbian - OrangePi Zero 2 (aka OPiz2) Script d'initialisation
 # F. Poulizac (fran6p)
 #
-# !!! En cours de test !!!
 
 if [ $(id -u) -ne 0 ]; then
 	echo "Ce script doit être exécuté en tant que «root»"
