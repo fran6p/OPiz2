@@ -61,10 +61,9 @@ su -c "/home/$OCTO_USER/OctoPrint/bin/pip install --no-cache-dir octoprint" -l $
 
 #Premier lancement du serveur. Si tout OK, le dossier caché .octoprint doit avoir été créé.
 # Il faut stopper manuellement le serveur pour poursuivre l'installation via CTRL+C 
-echo && echo "Lancement du serveur." && echo "Pour l'arrêter et poursuivre l'installation: CTRL+C"
-read -p "Presser une touche pour procéder" -n 1 -r -s OK && echo
+echo && echo "Lancement du serveur." && read -p "Presser une touche pour procéder" -n 1 -r -s OK && echo
 cd /home/pi
-su -c "/home/$OCTO_USER/OctoPrint/bin/octoprint serve" -l $OCTO_USER
+su -c "/home/$OCTO_USER/OctoPrint/bin/octoprint serve &" -l $OCTO_USER
 
 echo && read -p "Le serveur Octoprint a bien démarré ? (o/n)" -n 1 -r -s serveurOctoOK && echo
 if [[ $serveurOctoOK != "O" && $serveurOctoOK != "o" ]]; then
