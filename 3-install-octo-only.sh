@@ -70,6 +70,9 @@ if [[ $serveurOctoOK != "O" && $serveurOctoOK != "o" ]]; then
 	echo "Le serveur Octoprint a rencontré un problème."
 	echo "Un appel à Houston va être nécessaire :-("
 fi
+# On arrête «brutalement» le serveur octoprint lancé cprécédemment en tâche de fond (sinon en envoaynt un CTRL+C, le script se termine sans aller jusqu'au bout :-( )
+kill $(pgrep octoprint)
+
 # Installation des plugins 'indispensables'
 echo "Installation de quelques greffons :"
 echo "Dashboard, DisplayLayerProgress, FirmwareUpdater, PrintTimeGenius,
@@ -77,7 +80,7 @@ echo "UICustomizer, BackupScheduler, Resource-Monitor, Preheat,
 echo "GPIO-Status, MultipleUpload, NetworkHealth, AutoLoginConfig"
 echo
 cd /home/pi
-for greffon in "${OCTOPRINT_PLUGINS}"
+for greffon in "${OCTOPRINT_PLUGINS[@]}"
   do
     su -c "/home/$OCTO_USER/OctoPrint/bin/pip --no-cache-dir install ${greffon}" -l $OCTO_USER
   done
