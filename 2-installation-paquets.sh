@@ -32,14 +32,14 @@ apt update -y
 apt install -y $ProgramList
 
 # Préparation pout installer Octoprint via un script à lancer en utilisateur «pi»
-cp 3-install-octo-only.sh /home/pi
-chown pi:pi /home/pi/3-install-octo-only.sh
-chmod +x /home/pi/3-install-octo-only.sh
+#cp 3-install-octo-only.sh /home/pi
+#chown pi:pi /home/pi/3-install-octo-only.sh
+#chmod +x /home/pi/3-install-octo-only.sh
 
 echo 
-read -p "Presser ENTRÉE pour continuer \
-Déconnexion du 'root' \
-Se connecter en utilisateur 'pi' via 'sudo -iu pi'"
-logout
+read -p "Presser ENTRÉE pour continuer" \
+#Déconnexion du 'root' \
+#Se connecter en utilisateur 'pi' via 'sudo -iu pi'"
+#logout
 
 exit 0
