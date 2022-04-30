@@ -42,7 +42,7 @@ décrit précisément une installation manuelle (en ligne de commandes), les scr
     - ```ssh root@ADRESSE.IP.OPiz2.ICI```
     - Mot de passe : ``1234``
   - Exécuter la commande suivante pour télécharger le script d'initialisation à partir de ce dépôt, puis suivre les instructions.
-    - ``bash <(curl -Ls https://github.com/fran6p/OPiz2/raw/master/1-armbian-OPiz2.sh)``
+    - ``bash <(curl -Ls https://raw.githubusercontent.com/fran6p/OPiz2/main/1-armbian-OPiz2.sh)``
     - Sélectionner votre langue, votre emplacement et votre fuseau horaire (J'utilise ``fr_FR.UTF-8`` pour la langue FR et la zone Europe/Paris pour le fuseau horaire)
   - A la fin du script, la carte devrait redémarrer automatiquement.
   
