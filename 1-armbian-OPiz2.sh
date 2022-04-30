@@ -114,7 +114,7 @@ echo "Mot de passe: $WIFIPWD"
 echo "========================"
 echo
 echo "========================"
-echo "Nom d'hôte : $(hostame)"
+echo "Nom d'hôte : $rHostname"
 echo "IP Ethernet: $IP_RJ45"
 echo "IP Wifi    : $IP_WIFI"
 echo 
