@@ -61,10 +61,11 @@ su -c "/home/$OCTO_USER/OctoPrint/bin/pip install --no-cache-dir octoprint" -l $
 
 #Premier lancement du serveur. Si tout OK, le dossier caché .octoprint doit avoir été créé.
 # Il faut stopper manuellement le serveur pour poursuivre l'installation via CTRL+C 
-echo && echo "Lancement du serveur." && echo "Pour l'arrêter et poursuivre l'installation: CTRL+C" && read -p "Presser ENTRÉE pour procéder"
+echo && echo "Lancement du serveur." && echo "Pour l'arrêter et poursuivre l'installation: CTRL+C"
+read -p "Presser une touche pour procéder" -n 1 -r -s OK && echo
 cd /home/pi
-su -c "./home/$OCTO_USER/OctoPrint/bin/octoprint serve" -l $OCTO_USER
-clear
+su -c "/home/$OCTO_USER/OctoPrint/bin/octoprint serve" -l $OCTO_USER
+
 echo && read -p "Le serveur Octoprint a bien démarré ? (o/n)" -n 1 -r -s serveurOctoOK && echo
 if [[ $serveurOctoOK != "O" && $serveurOctoOK != "o" ]]; then
 	echo "Le serveur Octoprint a rencontré un problème."
@@ -89,5 +90,5 @@ echo "Installation de MJPEG-STREAMER"
 echo
 cd /home/pi
 su -c "git clone --depth 1 https://github.com/jacksonliam/mjpg-streamer.git mjpg-streamer" -l $OCTO_USER
-su -c "cd /home/pi/mjpg-streamer/mjpg-streamer/experimental && make" -l $OCTO_USER
+su -c "cd /home/pi/mjpg-streamer/mjpg-streamer-experimental && make" -l $OCTO_USER
 cd /home/pi
