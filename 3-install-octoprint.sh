@@ -67,12 +67,6 @@ echo && echo "Lancement du serveur." && read -p "Presser une touche pour procéd
 cd /home/$OCTO_USER
 su -c "/home/$OCTO_USER/OctoPrint/bin/octoprint serve &" -l $OCTO_USER
 
-echo && read -p "Le serveur Octoprint a bien démarré ? (o/n)" -n 1 -r -s serveurOctoOK && echo
-if [[ $serveurOctoOK != "O" && $serveurOctoOK != "o" ]]; then
-	echo "Le serveur Octoprint a rencontré un problème."
-	echo "Un appel à Houston va être nécessaire :-("
-	exit 1
-fi
 # On arrête «brutalement» le serveur octoprint lancé précédemment en tâche de fond (sinon en envoyant un CTRL+C, 
 # le script «pense» qu'on veut l'arrêter et il se termine sans aller jusqu'à la fin :-( )
 sleep 20
