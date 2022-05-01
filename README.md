@@ -56,7 +56,7 @@ décrit précisément une installation manuelle (en ligne de commandes), les scr
   - Exécuter la commande suivante pour télécharger le script de préparation à partir de ce dépôt.
     - ``bash <(curl -Ls https://raw.githubusercontent.com/fran6p/OPiz2/main/2-installation-paquets.sh)``
     - Cela mettra à jour et installera les dépendances de Armbian Bullseye requises pour ce projet (à jour au 4-2022).
-    - Soyez patient, cela peut prendre un certain temps.
+    - Soyez patient, **cela peut prendre un certain temps**.
     - AVERTISSEMENT - ceci téléchargera de quelques dizaines à quelques centaines de Mo de données de mise à jour.  Une connexion instable accroitra le temps de téléchargement.
 
 # Étape 4) Installation du logiciel Octoprint et compléments d'installation d'Octoprint
