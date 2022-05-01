@@ -80,7 +80,7 @@ décrit précisément une installation manuelle (en ligne de commandes), les scr
     - L'écran de l'assistant de configuration du premier lancement d'OctoPrint devrait s'afficher.
     
  # Étape 7) Configurer OctoPrint et en profiter !
-  - Le but de ce texte n'est pas de réaliser un guide de configuration d'Octoprint... N'importe quel moteur de recherche avec les bons mots clés devrait vous fournir de nombreux liens ;-) 
+  - Le but de ce texte n'est pas de réaliser un guide de configuration d'Octoprint... N'importe quel moteur de recherche avec les bons mots clés devrait vous fournir de nombreux liens :smirk: 
   
   **A NOTER**: quelques greffons ont été préinstallés qu'il faudra également configurer :wink:
   - Dashboard, 
