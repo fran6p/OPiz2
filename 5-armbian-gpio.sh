@@ -38,6 +38,7 @@ udevadm control --reload-rules
 udevadm trigger
 
 # Installation de wiringOP (accès GPIO)
+cd
 git clone https://github.com/orangepi-xunlong/wiringOP.git
 cd wiringOP
 ./build clean
