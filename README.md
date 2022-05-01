@@ -72,7 +72,7 @@ décrit précisément une installation manuelle (en ligne de commandes), les scr
   - Après installation de ces derniers scripts, Octoprint est pleinement fonctionnel et n'attends plus que la connexion de la carte sur l'imprimante 3D.
   
  # Étape 6) Connecter l'imprimante et tester
-  - Laisser à votre OPz2i une minute ou deux pour redémarrer (normalement pas nécessaire après les étapes 5 et 6).
+  - Laisser à votre OPz2i une minute ou deux pour redémarrer (normalement pas nécessaire après l'étapes 5).
   - Brancher votre câble USB d'un côté sur la carte OPiz2 (*un seul port USB disponible à moins que vous n'ayez ajouté son HAT USB complémentaire*) et de l'autre à votre imprimante 3D
   - Mettre votre imprimante 3D sous tension
   - Ouvrir un navigateur et visiter l'URL suivante :
