@@ -95,7 +95,7 @@ décrit précisément une installation manuelle (en ligne de commandes), les scr
   - NetworkHealth, 
   - AutoLoginConfig
   
-  Vous évidemment en ajouter d'autres ou en retirer si cela nne vous convient pas :smiley:
+  Vous évidemment en ajouter d'autres ou en retirer si cela ne vous convient pas :smiley:
   
   
  # Méthode alternative à l'exécution de scripts distants
