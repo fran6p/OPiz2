@@ -135,7 +135,7 @@ FINCOMMENTAIRE
 # Méthode alternative et préférable : récupérer ce script directement sur le Githut d'Octoprint
 wget https://github.com/OctoPrint/OctoPrint/raw/master/scripts/octoprint.service
 # Remplacer l'utilisateur 'pi' en dur par celui correspondant à OCTO_USER
-sed -i "s/pi/$$OCTO_USER/" octoprint.service
+sed -i "s/pi/$OCTO_USER/" octoprint.service
 # Modification de la ligne ExecStart de
 # ExecStart=/home/pi/OctoPrint/venv/bin/octoprint à ExecStart=/home/OCTO_USER/OctoPrint/bin/octoprint
 # Pour tenir compte de l'environnemet virtuel Python ( OctoPrint/venv/ en OctoPrint/ )
@@ -342,7 +342,7 @@ chown $OCTO_USER:$OCTO_USER /home/$OCTO_USER/.octoprint/config.yaml
 
 # Redémarrer OctoPrint et attendre qu'il ait fini son initialisation - sinon risque de reboots trop rapide et déclenchememt du «safe mode» au prochain démarrage
 systemctl start octoprint
-sleep 30
+sleep 15
 
 # Une petite pause avant de redémarrer
 echo && read -p "Presser la touche ENTRÉE pour redémarrer le système. La connexion ssh sera perdue et devra être relancée"
