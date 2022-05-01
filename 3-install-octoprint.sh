@@ -61,8 +61,8 @@ su -c "/home/$OCTO_USER/OctoPrint/bin/pip install pip --upgrade" -l $OCTO_USER
 su -c "/home/$OCTO_USER/OctoPrint/bin/pip install --no-cache-dir octoprint" -l $OCTO_USER
 
 #Premier lancement du serveur. Si tout OK, le dossier caché .octoprint doit avoir été créé.
-# Il faut stopper manuellement le serveur pour poursuivre l'installation via CTRL+C )
-# !!! En fait non, le serveur est arrêté «automatiquement» après un délai de 20s
+# Il faut stopper manuellement le serveur pour poursuivre l'installation via CTRL+C
+# !!! En fait non, le serveur sera arrêté «automatiquement» après un délai de 15s
 echo && echo "Lancement du serveur." && read -p "Presser une touche pour procéder" -n 1 -r -s OK && echo
 cd /home/$OCTO_USER
 su -c "/home/$OCTO_USER/OctoPrint/bin/octoprint serve &" -l $OCTO_USER
@@ -73,7 +73,8 @@ sleep 20
 # pkill pourrait également fonctionner : pkill octoprint
 kill $(pgrep octoprint)
 
-# Installation des plugins 'indispensables' => c'est mon avis ;-) 
+# Installation des plugins 'indispensables' => c'est mon avis ;-)
+clear
 echo "Installation de quelques greffons :"
 echo "Dashboard, DisplayLayerProgress, FirmwareUpdater, PrintTimeGenius,"
 echo "UICustomizer, BackupScheduler, Resource-Monitor, Preheat,"
@@ -87,6 +88,7 @@ for greffon in "${OCTOPRINT_PLUGINS[@]}"
   do
     su -c "/home/$OCTO_USER/OctoPrint/bin/pip --no-cache-dir install ${greffon}" -l $OCTO_USER
   done
+sleep 5
 
 # Mjpeg-streamer
 # PAQUETS REQUIS: subversion libjpeg62-turbo-dev imagemagick ffmpeg libv4l-dev cmake
@@ -97,6 +99,7 @@ cd /home/$OCTO_USER
 su -c "git clone --depth 1 https://github.com/jacksonliam/mjpg-streamer.git mjpg-streamer" -l $OCTO_USER
 su -c "cd /home/pi/mjpg-streamer/mjpg-streamer-experimental && make" -l $OCTO_USER
 cd /home/$OCTO_USER
+sleep 5
 
 # Installation d'Octoprint, compléments:
 # - services :
@@ -146,6 +149,7 @@ mv octoprint.service /etc/systemd/system/octoprint.service
 systemctl daemon-reload
 systemctl enable octoprint
 systemctl start octoprint
+sleep 5
 
 ######################HAProxy###################################
 # Installer HAProxy
@@ -200,9 +204,9 @@ mv /home/$OCTO_USER/haproxy.cfg /etc/haproxy/haproxy.cfg
 systemctl daemon-reload
 systemctl enable haproxy
 systemctl start haproxy
+sleep 5
 
 #########################Camera################################
-
 # Ajout des scipts de contrôle de la Webcam
 clear
 echo "Installation du scipt de contrôle de la Webcam en tant que service, activation et démarrage"
@@ -230,6 +234,7 @@ mv /home/$OCTO_USER/scripts/webcamd.service /etc/systemd/system/
 systemctl daemon-reload
 systemctl enable webcamd
 systemctl start webcamd
+sleep 5
 
 # Service Webcam
 #
@@ -342,7 +347,7 @@ chown $OCTO_USER:$OCTO_USER /home/$OCTO_USER/.octoprint/config.yaml
 
 # Redémarrer OctoPrint et attendre qu'il ait fini son initialisation - sinon risque de reboots trop rapide et déclenchememt du «safe mode» au prochain démarrage
 systemctl start octoprint
-sleep 15
+sleep 5
 
 # Une petite pause avant de redémarrer
 echo && read -p "Presser la touche ENTRÉE pour redémarrer le système. La connexion ssh sera perdue et devra être relancée"
