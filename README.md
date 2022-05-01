@@ -60,8 +60,7 @@ décrit précisément une installation manuelle (en ligne de commandes), les scr
     - AVERTISSEMENT - ceci téléchargera de quelques dizaines à quelques centaines de Mo de données de mise à jour.  Une connexion instable accroitra le temps de téléchargement.
 
 # Étape 4) Installation du logiciel Octoprint et compléments d'installation d'Octoprint
-
-    - Exécuter la commande suivante pour télécharger le script d'installation d'Octoprint et de ses compléments (installation, activation et démarrage des services (octoprint, webcamd, haproxy, modification du fichier config.yaml (Octoprint)) à partir de ce dépôt
+  - Exécuter la commande suivante pour télécharger le script d'installation d'Octoprint et de ses compléments (installation, activation et démarrage des services (octoprint, webcamd, haproxy, modification du fichier config.yaml (Octoprint)) à partir de ce dépôt
     - ``bash <(curl -Ls https://raw.githubusercontent.com/fran6p/OPiz2/main/3-install-octoprint.sh)``
   - A la fin du script, la carte va redémarrer automatiquement.
   
