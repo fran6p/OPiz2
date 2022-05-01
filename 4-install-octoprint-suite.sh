@@ -43,6 +43,7 @@ mv /home/pi/octoprint.service /etc/systemd/system/octoprint.service
 
 # Méthode alternative et préférable : récupérer ce script directement sur le Github d'Octoprint
 #wget https://github.com/OctoPrint/OctoPrint/raw/master/scripts/octoprint.service && mv octoprint.service /etc/systemd/system/octoprint.service
+# 
 #Recharger, activer l'auto-start puis démarrer le service OctoPrint
 systemctl daemon-reload
 systemctl enable octoprint

@@ -31,13 +31,13 @@ systemctl reload smbd
 
 # Ajouter l'utilisateur «pi»
 clear
-echo 'Le mot de passe pour permettre à l'utilisateur «pi» d'accéder au répertoire partagé est initialisé'
+echo "Le mot de passe pour permettre à l'utilisateur «pi» d'accéder au répertoire partagé est initialisé"
 echo
-echo 'Pour accéder au partage via l'explorateur de Windows, saisir : \\adresse_ip_orangepi'
+echo "Pour accéder au partage via l'explorateur de Windows, saisir : \\adresse_ip_orangepi"
 echo
 echo
 # Manuellement saisir le mot de passe Samba pour pouvoir se connecter sur le partage (smbpasswd -a pi)
-echo -e "orangepi\norangepi\n" | (smbpasswd -a pi)
+echo -e "orangepi\norangepi" | (smbpasswd -a pi)
 
 # Fin 
 echo

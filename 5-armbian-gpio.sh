@@ -15,10 +15,10 @@ if [[ $installGpio != "O" && $installGpio != "o" ]]; then
 	exit 1
 fi
 
-# créer le groupe (système) «gpio» si absent
+# Créer le groupe (système) «gpio» si absent
 #groupadd -f -r gpio
 #Mieux:
-getent group gpio 2>&1 > /dev/null || groupadd gpio
+getent group gpio 2>&1 > /dev/null || groupadd -f -r gpio
 
 # Modifier les droits utilisateurs - Ajout de l'utilisateur au groupe gpio
 usermod -a -G gpio pi
@@ -33,6 +33,15 @@ chown -R root:gpio /sys/devices/platform/sunxi-pinctrl/gpio && chmod -R 0770
 SUBSYSTEM=="gpio", GROUP="gpio", MODE="0660"
 EOF
 
-#Recharger les régles et les déclencher
+# Recharger les régles et les déclencher
 udevadm control --reload-rules
 udevadm trigger
+
+# Installation de wiringOP (accès GPIO)
+git clone https://github.com/orangepi-xunlong/wiringOP.git
+cd wiringOP
+./build clean
+./build
+
+# Affichage des GPIO
+# =>  gpio readall

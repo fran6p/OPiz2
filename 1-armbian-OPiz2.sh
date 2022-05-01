@@ -48,7 +48,7 @@ IP_WIFI=$(ifconfig wlan0 |perl -ne 'print $1 if /inet\s.*?(\d{1,3}\.\d{1,3}\.\d{
 
 # Mot de passe
 #(echo "root" ; echo "$ROOTPWD" ; echo "$ROOTPWD") | passwd
-echo -e "$ROOTPWD\n$ROOTPWD\n" | (passwd root)
+echo -e "$ROOTPWD\n$ROOTPWD" | passwd root
 
 # Eviter qu'à la prochaine connexion en root qu'il soit demandé de modifier le MDP
 rm -f /root/.not_logged_in_yet
@@ -77,15 +77,15 @@ setupcon
 
 
 # Ajout de l'utilisateur «pi» (Octoprint)
-echo "Ajout de l'utilisateur 'pi' )Octoprint)"
+echo "Ajout de l'utilisateur $OCTO_USER (Octoprint)"
 echo "Cet utilisateur appartient aux groupes : sudo,video,plugdev,dialout,tty "
-echo "Son mot de passe est fixé à 'orangepi'"
+echo "Son mot de passe est fixé à '**orangepi**'"
 echo
 adduser $OCTO_USER
 # Ajouter «pi» aux groupes nécessaires
 usermod -a -G sudo,video,plugdev,dialout,tty  $OCTO_USER
 # Mettre un mot de passe à l'utilisateur «pi» (à modifier ultérieurement si besoin)
-echo -e "$OCTO_USERPWD\n$OCTO_USERPWD\n" | (passwd $OCTO_USER)
+echo -e "$OCTO_USERPWD\n$OCTO_USERPWD" | passwd $OCTO_USER
 
 # Permettre à «pi» de lancer des commandes normalement lancées avec les droits «root» (shutdown et service)
 echo "On autorise l'utilisateur $OCTO_USER à arrêter, redémarrer le système ainsi que redémarrer certains services"
@@ -106,7 +106,6 @@ echo "========================"
 echo "Utilisateur : $OCTO_USER"
 echo "Mot de passe: $OCTO_USERPWD"
 echo "========================"
-echo " => à modifier après redémarrage (ou pas ;-) )"
 echo
 echo "========================"
 echo "WIfi        : $SSID"

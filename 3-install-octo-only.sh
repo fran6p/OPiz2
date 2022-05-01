@@ -9,7 +9,7 @@ OCTO_USER="pi"
 
 # Liste de greffons (plugins) 'indispensables' (à modifier éventuellement)
 # Dashboard, DisplayLayerProgress, FirmwareUpdater, PrintTimeGenius, UICustomizer, BackupScheduler, Resource-Monitor,
-# Preheat, GPIO-Status, MultipleUpload, NetworkHealth, AutoLoginConfig
+# Preheat, MultipleUpload, NetworkHealth, AutoLoginConfig
 OCTOPRINT_PLUGINS=( "https://github.com/j7126/OctoPrint-Dashboard/archive/master.zip"
                     "https://github.com/OllisGit/OctoPrint-DisplayLayerProgress/releases/latest/download/master.zip"
                     "https://github.com/OctoPrint/OctoPrint-FirmwareUpdater/archive/master.zip"
@@ -18,7 +18,6 @@ OCTOPRINT_PLUGINS=( "https://github.com/j7126/OctoPrint-Dashboard/archive/master
                     "https://github.com/jneilliii/OctoPrint-BackupScheduler/archive/master.zip"
                     "https://github.com/Renaud11232/OctoPrint-Resource-Monitor/archive/master.zip"
                     "https://github.com/marian42/octoprint-preheat/archive/master.zip"
-                    "https://github.com/danieleborgo/OctoPrint-GPIOStatus/archive/master.zip"
                     "https://github.com/eyal0/OctoPrint-MultipleUpload/archive/master.zip"
                     "https://github.com/jonfairbanks/OctoPrint-NetworkHealth/archive/master.zip"                    
                     "https://github.com/OctoPrint/OctoPrint-AutoLoginConfig/releases/latest/download/release.zip"            
@@ -75,8 +74,8 @@ kill $(pgrep octoprint)
 
 # Installation des plugins 'indispensables'
 echo "Installation de quelques greffons :"
-echo "Dashboard, DisplayLayerProgress, FirmwareUpdater, PrintTimeGenius,
-echo "UICustomizer, BackupScheduler, Resource-Monitor, Preheat,
+echo "Dashboard, DisplayLayerProgress, FirmwareUpdater, PrintTimeGenius,"
+echo "UICustomizer, BackupScheduler, Resource-Monitor, Preheat,"
 echo "GPIO-Status, MultipleUpload, NetworkHealth, AutoLoginConfig"
 echo
 cd /home/pi
