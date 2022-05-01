@@ -81,7 +81,7 @@ echo "Ajout de l'utilisateur $OCTO_USER (Octoprint)"
 echo "Cet utilisateur appartient aux groupes : sudo,video,plugdev,dialout,tty "
 echo "Son mot de passe est fixé à '**orangepi**'"
 echo
-adduser $OCTO_USER
+useradd -d /home/$OCTO_USER $OCTO_USER
 # Ajouter «pi» aux groupes nécessaires
 usermod -a -G sudo,video,plugdev,dialout,tty  $OCTO_USER
 # Mettre un mot de passe à l'utilisateur «pi» (à modifier ultérieurement si besoin)
