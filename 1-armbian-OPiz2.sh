@@ -90,9 +90,9 @@ echo -e "$OCTO_USERPWD\n$OCTO_USERPWD" | passwd $OCTO_USER
 # Permettre à «pi» de lancer des commandes normalement lancées avec les droits «root» (shutdown et service)
 echo "On autorise l'utilisateur $OCTO_USER à arrêter, redémarrer le système ainsi que redémarrer certains services"
 echo
-echo "$OCTO_USER   ALL = (ALL) NOPASSWD: /sbin/shutdown *" > /etc/sudoers.d/octoprint-shutdown
-echo "$OCTO_USER   ALL = (ALL) NOPASSWD: /usr/bin/systemctl restart octoprint.service" > /etc/sudoers.d/octoprint-service
-echo "$OCTO_USER   ALL = (ALL) NOPASSWD: /sbin/ip" > /etc/sudoers.d/octoprint-ip
+echo "$OCTO_USER   ALL=(ALL) NOPASSWD:/sbin/shutdown *" > /etc/sudoers.d/octoprint-shutdown
+echo "$OCTO_USER   ALL=(ALL) NOPASSWD:/usr/bin/systemctl restart octoprint.service, /usr/sbin/service octoprint restart" > /etc/sudoers.d/octoprint-service
+echo "$OCTO_USER   ALL=(ALL) NOPASSWD:/sbin/ip" > /etc/sudoers.d/octoprint-ip
 # attribuer les bons droits sur ces derniers fichiers
 chmod 0440 /etc/sudoers.d/octoprint-*
 
