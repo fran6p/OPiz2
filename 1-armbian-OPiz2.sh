@@ -91,7 +91,7 @@ echo -e "$OCTO_USERPWD\n$OCTO_USERPWD" | passwd $OCTO_USER
 echo "On autorise l'utilisateur $OCTO_USER à arrêter, redémarrer le système ainsi que redémarrer certains services"
 echo
 echo "$OCTO_USER   ALL = (ALL) NOPASSWD: /sbin/shutdown *" > /etc/sudoers.d/octoprint-shutdown
-echo "$OCTO_USER   ALL = (ALL) NOPASSWD: /bin/systemctl restart octoprint.service" > /etc/sudoers.d/octoprint-service
+echo "$OCTO_USER   ALL = (ALL) NOPASSWD: /usr/bin/systemctl restart octoprint.service" > /etc/sudoers.d/octoprint-service
 echo "$OCTO_USER   ALL = (ALL) NOPASSWD: /sbin/ip" > /etc/sudoers.d/octoprint-ip
 # attribuer les bons droits sur ces derniers fichiers
 chmod 0440 /etc/sudoers.d/octoprint-*
