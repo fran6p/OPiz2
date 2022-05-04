@@ -33,12 +33,16 @@ décrit en détails une installation manuelle (en ligne de commandes), les scrip
 
 >  **Ce n'est jamais une bonne pratique d'exécuter aveuglément des scripts d'inconnus à partir d'Internet**.  Les scripts fournis ici ne sont qu'un outil d'apprentissage. **Veuillez examiner les commentaires et le code**.
 
-# Étape 1) Configuration de la carte SD
+# Étape 1)
+
+## Configuration de la carte SD
 
   - Télécharger la dernière version de [Armbian](https://www.armbian.com/orange-pi-zero-2/) ( Armbian 22.02 Bullseye au moment de la rédaction )  
   - Imager votre carte SD avec votre imageur préféré
   
-# Étape 2) Configuration initiale du OrangePI Zero 2 (OPiz2)
+# Étape 2) 
+
+## Configuration initiale du OrangePI Zero 2 (OPiz2)
 
   - Insérer la carte SD imagée dans le OPiz2.
   - Brancher un câble RJ45 sur le OPiz2 d'un côté et sur votre routeur de l'autre.
@@ -53,7 +57,9 @@ décrit en détails une installation manuelle (en ligne de commandes), les scrip
     - Sélectionner votre langue, votre emplacement et votre fuseau horaire (J'utilise ``fr_FR.UTF-8 UTF8  `` pour la langue FR les locales et la zone Europe/Paris pour le fuseau horaire)
   - A la fin du script, un récapitulatif sera affiché puis la carte devrait redémarrer après confirmation.
   
-# Étape 3) Préparation de Linux
+# Étape 3)
+
+## Préparation de Linux
 
   - Une fois votre OPiz2 redémarré.
   - Vous reconnecter via SSH en utilisant ``1234`` comme mot de passe «root».
@@ -66,13 +72,17 @@ décrit en détails une installation manuelle (en ligne de commandes), les scrip
     - Soyez patient, **cela peut prendre un certain temps**.
     - AVERTISSEMENT - ceci téléchargera de quelques dizaines à quelques centaines de Mo de données de mise à jour.  Une connexion instable accroitra le temps de téléchargement.
 
-# Étape 4) Installation du logiciel Octoprint et compléments d'installation d'Octoprint
+# Étape 4) 
+
+## Installation du logiciel Octoprint et compléments d'installation d'Octoprint
 
   - Exécuter la commande suivante pour télécharger le script d'installation d'Octoprint et de ses compléments (installation, activation et démarrage des services (octoprint, webcamd, haproxy, modification du fichier config.yaml (Octoprint)) à partir de ce dépôt
     - ``bash <(curl -Ls https://raw.githubusercontent.com/fran6p/OPiz2/main/3-install-octoprint.sh)``
   - A la fin du script, la carte va redémarrer automatiquement.
   
- # Étape 5) Installations facultatives mais bien pratiques
+ # Étape 5) 
+ 
+ ## Installations facultatives mais bien pratiques
  
   - Exécuter la commande suivante pour télécharger le script permettant de gérer les «GPIO» de *maniére identique* à un Raspberry Pi à partir de ce dépôt (utilisateur: root, groupe: gpio, droits (0660) (crw-rw----) au lieu de root:root (0600))
     - ``bash <(curl -Ls https://raw.githubusercontent.com/fran6p/OPiz2/main/5-armbian-gpio.sh)``
@@ -80,7 +90,9 @@ décrit en détails une installation manuelle (en ligne de commandes), les scrip
     - ``bash <(curl -Ls https://raw.githubusercontent.com/fran6p/OPiz2/main/6-octo-samba.sh)``	
   - Après installation de ces derniers scripts, Octoprint est pleinement fonctionnel et n'attends plus que la connexion de la carte sur l'imprimante 3D.
   
- # Étape 6) Connecter l'imprimante et tester
+ # Étape 6) 
+ 
+ ## Connecter l'imprimante et tester
  
   - Laisser à votre OPz2i une minute ou deux pour redémarrer (normalement pas nécessaire après l'étapes 5).
   - Brancher votre câble USB d'un côté sur la carte OPiz2 (*un seul port USB disponible à moins que vous n'ayez ajouté son HAT USB complémentaire*) et de l'autre à votre imprimante 3D
@@ -89,22 +101,25 @@ décrit en détails une installation manuelle (en ligne de commandes), les scrip
     - ```http://ADRESSE.IP.OPiz2.ICI```
     - L'écran de l'assistant de configuration du premier lancement d'OctoPrint devrait s'afficher.
     
- # Étape 7) Configurer OctoPrint et en profiter !
+ # Étape 7) 
+ 
+ ## Configurer OctoPrint et en profiter !
  
   - Le but de ce texte n'est pas de réaliser un guide de configuration d'Octoprint... N'importe quel moteur de recherche avec les bons mots clés devrait vous fournir de nombreux liens :smirk: 
   
-  **A NOTER**: quelques greffons ont été préinstallés qu'il faudra également configurer :wink:
-  - Dashboard, 
-  - DisplayLayerProgress,
-  - FirmwareUpdater,
-  - PrintTimeGenius, 
-  - UICustomizer, 
-  - BackupScheduler, 
-  - Resource-Monitor,
-  - Preheat, 
-  - MultipleUpload, 
-  - NetworkHealth, 
-  - AutoLoginConfig
+ > **A NOTER**: 
+ > Quelques greffons ont été préinstallés qu'il faudra également configurer :wink:
+ > - Dashboard, 
+ > - DisplayLayerProgress,
+ > - FirmwareUpdater,
+ > - PrintTimeGenius, 
+ > - UICustomizer, 
+ > - BackupScheduler, 
+ > - Resource-Monitor,
+ > - Preheat, 
+ > - MultipleUpload, 
+ > - NetworkHealth, 
+ > - AutoLoginConfig
   
   Vous pouvez évidemment en ajouter d'autres ou en retirer si cela ne vous convient pas 😏:
   
