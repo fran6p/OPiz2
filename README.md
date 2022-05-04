@@ -34,14 +34,12 @@ décrit en détails une installation manuelle (en ligne de commandes), les scrip
 >  **Ce n'est jamais une bonne pratique d'exécuter aveuglément des scripts d'inconnus à partir d'Internet**.  Les scripts fournis ici ne sont qu'un outil d'apprentissage. **Veuillez examiner les commentaires et le code**.
 
 # Étape 1)
-
 ## Configuration de la carte SD
 
   - Télécharger la dernière version de [Armbian](https://www.armbian.com/orange-pi-zero-2/) ( Armbian 22.02 Bullseye au moment de la rédaction )  
   - Imager votre carte SD avec votre imageur préféré
   
 # Étape 2) 
-
 ## Configuration initiale du OrangePI Zero 2 (OPiz2)
 
   - Insérer la carte SD imagée dans le OPiz2.
@@ -58,7 +56,6 @@ décrit en détails une installation manuelle (en ligne de commandes), les scrip
   - A la fin du script, un récapitulatif sera affiché puis la carte devrait redémarrer après confirmation.
   
 # Étape 3)
-
 ## Préparation de Linux
 
   - Une fois votre OPiz2 redémarré.
@@ -73,7 +70,6 @@ décrit en détails une installation manuelle (en ligne de commandes), les scrip
     - AVERTISSEMENT - ceci téléchargera de quelques dizaines à quelques centaines de Mo de données de mise à jour.  Une connexion instable accroitra le temps de téléchargement.
 
 # Étape 4) 
-
 ## Installation du logiciel Octoprint et compléments d'installation d'Octoprint
 
   - Exécuter la commande suivante pour télécharger le script d'installation d'Octoprint et de ses compléments (installation, activation et démarrage des services (octoprint, webcamd, haproxy, modification du fichier config.yaml (Octoprint)) à partir de ce dépôt
@@ -81,7 +77,6 @@ décrit en détails une installation manuelle (en ligne de commandes), les scrip
   - A la fin du script, la carte va redémarrer automatiquement.
   
  # Étape 5) 
- 
  ## Installations facultatives mais bien pratiques
  
   - Exécuter la commande suivante pour télécharger le script permettant de gérer les «GPIO» de *maniére identique* à un Raspberry Pi à partir de ce dépôt (utilisateur: root, groupe: gpio, droits (0660) (crw-rw----) au lieu de root:root (0600))
@@ -91,7 +86,6 @@ décrit en détails une installation manuelle (en ligne de commandes), les scrip
   - Après installation de ces derniers scripts, Octoprint est pleinement fonctionnel et n'attends plus que la connexion de la carte sur l'imprimante 3D.
   
  # Étape 6) 
- 
  ## Connecter l'imprimante et tester
  
   - Laisser à votre OPz2i une minute ou deux pour redémarrer (normalement pas nécessaire après l'étapes 5).
@@ -102,7 +96,6 @@ décrit en détails une installation manuelle (en ligne de commandes), les scrip
     - L'écran de l'assistant de configuration du premier lancement d'OctoPrint devrait s'afficher.
     
  # Étape 7) 
- 
  ## Configurer OctoPrint et en profiter !
  
   - Le but de ce texte n'est pas de réaliser un guide de configuration d'Octoprint... N'importe quel moteur de recherche avec les bons mots clés devrait vous fournir de nombreux liens :smirk: 
