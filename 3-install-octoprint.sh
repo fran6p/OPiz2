@@ -300,7 +300,7 @@ done
 EOF
 
 # Remplacer l'utilisateur "$OCTO_USER" en dur par celui correspondant à OCTO_USER
-sed -i "s/pi/$OCTO_USER/" webcamDaemon
+sed -i "s/home\/pi/home\/$OCTO_USER/" webcamDaemon
 # Attribuer les bons droits et appartenance (utilisateur $OCTO_USER, groupe $OCTO_USER)
 chown $OCTO_USER:$OCTO_USER /home/$OCTO_USER/scripts/webcamDaemon
 chmod +x /home/$OCTO_USER/scripts/webcamDaemon
@@ -321,7 +321,7 @@ sudo -u $OCTO_USER cat << EOF >> "/home/$OCTO_USER/.octoprint/config.yaml"
 server:
   host: 127.0.0.1
   commands:
-    serverRestartCommand: sudo systemctl restart octoprint
+    serverRestartCommand: sudo service octoprint restart
     systemRestartCommand: sudo shutdown -r now
     systemShutdownCommand: sudo shutdown -h now
 webcam:
@@ -345,7 +345,7 @@ EOF
 # Attribuer les bons droits et appartenance (utilisateur pi)
 chown $OCTO_USER:$OCTO_USER /home/$OCTO_USER/.octoprint/config.yaml
 
-# Redémarrer OctoPrint et attendre qu'il ait fini son initialisation - sinon risque de reboots trop rapide et déclenchememt du «safe mode» au prochain démarrage
+# Redémarrer OctoPrint et attendre qu'il ait fini son initialisation - sinon avec un redémarrage (reboot) trop rapide => risque de déclenchememt du «safe mode» au prochain démarrage
 systemctl start octoprint
 sleep 5
 
