@@ -117,6 +117,16 @@ décrit en détails une installation manuelle (en ligne de commandes), les scrip
   Vous pouvez évidemment en ajouter d'autres ou en retirer si cela ne vous convient pas 😏:
   
   
+ # UPDATE (Octoprint est monté zn version 1.8.0 depuis le 18 mai 2022)
+ 
+ ## Mise à jour de la version 1.7.3 en 1.8.0 via la notification du serveur ne se fait pas :cry:
+ 
+Pour mettre à jour la version 1.7.3 en 1.8.0, il est préférable d'utiliser le script "7-maj-octoprint.sh", en tentant de faire cette mise à jour proposée en notification dans l'interface du serveur Octoprint, elle n'aboutit pas et provoque une erreur (le chemin d'installation du script de Foosel n'est pas identique à celui utilisé ici pour installer Octoprint sur la carte Orange Pi Zero 2).
+
+  - Exécuter la commande suivante pour télécharger le script permettant de mettre à jour Octoprint dans la dernière version disponible à partir de ce dépôt :
+    - ``bash <(curl -Ls https://raw.githubusercontent.com/fran6p/OPiz2/main/7-maj-octoprint.sh)``
+  - Après l'exécution de ce dernier script, le système redémarrera. Octoprint devrait être passé en version 1.8.0 (vérifier en bas à gauche de l'interface Web que cette version s'affiche ;smirk: ).
+
  # Méthode alternative à l'exécution de scripts distants
  
   - Plutôt qu'exécuter les scripts à distance, vous pouvez récupérer le contenu de ce dépôt :
