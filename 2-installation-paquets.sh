@@ -32,6 +32,6 @@ apt update -y
 apt install -y $ProgramList
 
 echo 
-read -p "Presser ENTRÉE pour continuer" \
+read -p "Presser ENTRÉE pour continuer"
 
 exit 0
