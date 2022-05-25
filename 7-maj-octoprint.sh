@@ -8,8 +8,8 @@
 # Utilisateur non priviligié (pi)
 OCTO_USER="pi"
 
-echo "Ce script bien qu'exécuté en tant que «root»"
-echo "effectue une partie de l'installation en tant qu'utilisateur $OCTO_USER"
+echo "Ce script est exécuté en tant qu'utilisateur $OCTO_USER"
+echo "Seul le redémarrage du serveur nécessite les droits du superutilisateur «root»"
 echo
 read -p "Presser ENTRÉE pour continuer"
 
@@ -26,9 +26,9 @@ echo "Mise à jour de Octoprint"
 echo
 
 cd /home/$OCTO_USER
-su -c "source OctoPrint/bin/activate" -l $OCTO_USER
-su -c "/home/$OCTO_USER/OctoPrint/bin/pip install pip --upgrade" -l $OCTO_USER
-su -c "/home/$OCTO_USER/OctoPrint/bin/pip install --no-cache-dir octoprint --upgrade" -l $OCTO_USER
+source OctoPrint/bin/activate
+/home/$OCTO_USER/OctoPrint/bin/pip install pip --upgrade
+/home/$OCTO_USER/OctoPrint/bin/pip install --no-cache-dir octoprint --upgrade
 
 # Redémarrer le serveur Octoprint
 systemctl restart octoprint
