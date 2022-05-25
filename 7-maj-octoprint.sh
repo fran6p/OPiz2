@@ -8,11 +8,10 @@
 # Utilisateur non priviligié (pi)
 OCTO_USER="pi"
 
-if [ $(id -u) -ne 0 ]; then
-	echo "Ce script bien qu'exécuté en tant que «root»"
-	echo "effectue une partie de l'installation en tant qu'utilisateur $OCTO_USER"
-	exit 1
-fi
+echo "Ce script bien qu'exécuté en tant que «root»"
+echo "effectue une partie de l'installation en tant qu'utilisateur $OCTO_USER"
+echo
+read -p "Presser ENTRÉE pour continuer"
 
 clear
 echo && read -p "Voulez-vous mettre à jour le serveur Octoprint ? (o/n)" -n 1 -r -s majOcto && echo
