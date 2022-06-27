@@ -72,7 +72,7 @@ export LANGUAGE=$LANG
 echo "Configuration du clavier"
 echo
 localectl set-keymap fr
-setupcon
+#setupcon
 
 
 
