@@ -244,11 +244,13 @@ sudo -u $OCTO_USER cat << EOF > "/home/$OCTO_USER/scripts/webcamDaemon"
 #!/bin/bash
 
 MJPGSTREAMER_HOME=/home/pi/mjpg-streamer/mjpg-streamer-experimental
-MJPGSTREAMER_INPUT_USB="input_uvc.so"
+#MJPGSTREAMER_INPUT_USB="input_uvc.so"
+# Forcer l'utilisation du périphérique «video1»
+MJPGSTREAMER_INPUT_USB="input_uvc.so -d /dev/video1" 
 MJPGSTREAMER_INPUT_RASPICAM="input_raspicam.so"
 
 # init configuration
-camera="auto"
+camera="usb"
 camera_usb_options="-r 640x480 -f 10"
 camera_raspi_options="-fps 10"
 
@@ -289,7 +291,7 @@ echo raspi options: \$camera_raspi_options
 
 # keep mjpg streamer running if some camera is attached
 while true; do
-    if [ -e "/dev/video0" ] && { [ "\$camera" = "auto" ] || [ "\$camera" = "usb" ] ; }; then
+    if { [ -e "/dev/video0" ] || [ -e "/dev/video1" ] } && { [ "\$camera" = "auto" ] || [ "\$camera" = "usb" ] ; }; then
         startUsb
     elif [ "`vcgencmd get_camera`" = "supported=1 detected=1" ] && { [ "\$camera" = "auto" ] || [ "\$camera" = "raspi" ] ; }; then
         startRaspi
