@@ -54,6 +54,7 @@ décrit en détails une installation manuelle (en ligne de commandes), les scrip
     - Si vous souhaitez pouvoir accéder à la carte en Wifi, indiquer le nom du point d'accès (SSID) et son mot de passe pour pouvoir l'activer.
     - Sélectionner votre langue, votre emplacement et votre fuseau horaire (J'utilise ``fr_FR.UTF-8 UTF8  `` pour la langue FR les locales et la zone Europe/Paris pour le fuseau horaire)
   - A la fin du script, un récapitulatif sera affiché puis la carte devrait redémarrer après confirmation.
+  *Il est assez fréquenr que la carte ne redémarre pas correctement. Le plus simple, ne ce cas, est de débrancher l'alimentation, attednre quelques secondes puis reconnecter (en espérant que la DEL (LED) passe au vert, si elle reste rouge fixe, c'est malheuresuement souvent dû à la version Armbian installée :smirk: ). 
   
 # Étape 3)
 ## Préparation de Linux
@@ -120,6 +121,8 @@ décrit en détails une installation manuelle (en ligne de commandes), les scrip
  # UPDATE (Octoprint est monté en version 1.8.0 depuis le 18 mai 2022)
  
  # UPDATE 2 Octoprint en version 1.8.1 depuis le 25 mai 2022
+ 
+ # UPDATE Septembre 2022, Octoprint est désormais en version 1.8.4
  
  ## Mise à jour de la version 1.7.3 en 1.8.0 (1.8.1) via la notification du serveur ne se fait pas :cry:
  
